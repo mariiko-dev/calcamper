@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расчет тока на нейтрале</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Расчет тока на нейтрале</h1>
+        <div class="form-group">
+            <label for="phase1">Ток в фазе A (Амперы):</label>
+            <input type="number" class="form-control" id="phase1" placeholder="Введите ток в фазе A">
+        </div>
+        <div class="form-group">
+            <label for="phase2">Ток в фазе B (Амперы):</label>
+            <input type="number" class="form-control" id="phase2" placeholder="Введите ток в фазе B">
+        </div>
+        <div class="form-group">
+            <label for="phase3">Ток в фазе C (Амперы):</label>
+            <input type="number" class="form-control" id="phase3" placeholder="Введите ток в фазе C">
+        </div>
+        <button class="btn btn-primary" onclick="calculateAndDisplay()">Рассчитать</button>
+        <div class="mt-3" id="result"></div>
+    </div>
+
+    <script>
+        class Complex {
+            constructor(re, im) {
+                this.re = re;
+                this.im = im;
+            }
+        
+            add(other) {
+                return new Complex(this.re + other.re, this.im + other.im);
+            }
+        
+            abs() {
+                return Math.sqrt(this.re * this.re + this.im * this.im);
+            }
+        }
+        
+        function polarToComplex(magnitude, angleDegrees) {
+            const angleRadians = (angleDegrees * Math.PI) / 180;
+            return new Complex(magnitude * Math.cos(angleRadians), magnitude * Math.sin(angleRadians));
+        }
+        
+        function calculateNeutralCurrent(i1, i2, i3) {
+            const phase1 = polarToComplex(i1, 0);
+            const phase2 = polarToComplex(i2, -120);
+            const phase3 = polarToComplex(i3, 120);
+        
+            const neutral = phase1.add(phase2).add(phase3);
+        
+            return neutral.abs();
+        }
+        
+        function calculateAndDisplay() {
+            const i1 = parseFloat(document.getElementById('phase1').value);
+            const i2 = parseFloat(document.getElementById('phase2').value);
+            const i3 = parseFloat(document.getElementById('phase3').value);
+            
+            const neutralCurrent = calculateNeutralCurrent(i1, i2, i3);
+            
+            document.getElementById('result').innerHTML = `Ток на нейтрале: ${neutralCurrent.toFixed(2)} А`;
+        }
+    </script>
+</body>
+</html>
