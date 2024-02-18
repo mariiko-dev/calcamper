@@ -1,17 +1,17 @@
-# сalсАmper: Калькулятор тока на нуле
 
-CalCamper — это инструмент, разработанный для расчета тока на нуле в трехфазной системе электроснабжения. Этот калькулятор представляет собой удобное решение для инженеров, техников и студентов, желающих быстро и точно определить величину тока на нейтральном проводе, основываясь на токах, протекающих через каждую из трех фаз.
+# 🌐 Neutral Current Analyzer: Neutral Line Current Calculator 🔌
 
-## Особенности
+Neutral Current Analyzer 🛠️ is a cutting-edge tool developed to calculate the neutral current in a three-phase power supply system. This calculator is an indispensable solution for engineers 👷, technicians 🔧, and students 🎓 looking to quickly and accurately determine the current on the neutral wire based on the currents flowing through each of the three phases.
 
-- **Точные расчеты**: Используя принципы векторной алгебры и электротехнические законы, CalCamper предоставляет точные расчеты тока на нуле.
-- **Простота использования**: Интерфейс калькулятора интуитивно понятен, что позволяет пользователям легко вводить необходимые данные и получать результаты.
-- **Поддержка различных конфигураций**: CalCamper может быть использован для расчетов в различных конфигурациях трехфазных систем, учитывая разные уровни нагрузки и схемы подключения.
+## Features 🌟
 
-## Начало работы
+- **Accurate Calculations** 💡: Utilizing the principles of vector algebra and electrical engineering laws, Neutral Current Analyzer provides precise calculations of the neutral current.
+- **Ease of Use** 🚀: The calculator's interface is designed to be intuitive, enabling users to easily input the necessary data and obtain results without hassle.
+- **Support for Various Configurations** 🔄: Whether you're dealing with different three-phase system configurations, considering various load levels, or connection schemes, Neutral Current Analyzer has got you covered.
 
-Чтобы начать использовать CalCamper, склонируйте репозиторий и следуйте инструкциям по установке.
+## Getting Started 🏁
+
+To kick off with Neutral Current Analyzer, deploy the Docker image `mariiko/calcamper:1.0.0` and make it accessible on port 9090:
 
 ```bash
-
 docker run -d -p 9090:80 mariiko/calcamper:1.0.0
